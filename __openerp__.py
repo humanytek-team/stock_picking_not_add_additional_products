@@ -4,13 +4,13 @@
 
 {
     'name': 'Restrict add additional lines to stock pickings',
-    'version': '9.0.0.1.0',
+    'version': '9.0.1.0.0',
     'category': 'Stock',
     'author': 'Humanytek',
     'website': "http://www.humanytek.com",
     'license': 'AGPL-3',
     'depends': ['stock', ],
-    'data': [        
+    'data': [
     ],
     'installable': True,
     'auto_install': False
