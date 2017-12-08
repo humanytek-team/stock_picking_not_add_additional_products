@@ -8,19 +8,20 @@ from openerp.tools.translate import _
 
 
 class StockPicking(models.Model):
-    _inherit = 'stock.picking'
+    _inherit = 'stock.picking'    
 
     @api.multi
-    def write(self, vals):
-        if not self.user_has_groups('stock.group_stock_manager'):
-            if self.picking_type_id.code in ['incoming', 'outgoing']:
-                if 'pack_operation_product_ids' in vals.keys():
-                    for line in vals['pack_operation_product_ids']:
-                        if line[0] == 0 and not line[1] and \
-                                isinstance(line[2], dict):
+    def do_new_transfer(self):
 
+        if not self.user_has_groups('stock.group_stock_manager'):
+            for pick in self:
+                if pick.picking_type_code in ['incoming', 'outgoing']:
+                    for pack_operation in pick.pack_operation_product_ids:
+                        if pack_operation.product_id.id not in \
+                                pick.purchase_id.mapped(
+                                    'order_line.product_id.id'):
                             raise ValidationError(
                                 _('You cannot add additional products to those in the source document.')
                                 )
 
-        return super(StockPicking, self).write(vals)
+        return super(StockPicking, self).do_new_transfer()
