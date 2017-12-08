@@ -4,7 +4,7 @@
 
 {
     'name': 'Restrict add additional lines to stock pickings',
-    'version': '9.0.1.0.1',
+    'version': '9.0.1.0.2',
     'category': 'Stock',
     'author': 'Humanytek',
     'website': "http://www.humanytek.com",
