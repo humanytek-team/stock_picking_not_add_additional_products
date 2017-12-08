@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [9.0.1.0.2] - 2017-12-08
+### changed
+- Fix bug in validation of additional products in pickings.
+
 ## [9.0.1.0.1] - 2017-12-08
 ### changed
 - Moves validation to method of validation of pickings.
